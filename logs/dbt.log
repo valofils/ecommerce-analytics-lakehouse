@@ -1,0 +1,30 @@
+[0m20:05:33.440650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756CEE750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756CED3D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756CEDCD0>]}
+
+
+============================== 20:05:33.453239 | 1c96089a-a1eb-4eb2-a3d2-dc7aa1960b0b ==============================
+[0m20:05:33.453239 [info ] [MainThread]: Running with dbt=1.7.19
+[0m20:05:33.454978 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\Ambratis\\.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt init transform', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m20:05:33.456993 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/Ambratis/.dbt')}
+[0m20:05:33.459399 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m20:05:33.462649 [debug] [MainThread]: Starter project path: D:\project\ecommerce-analytics-lakehouse\venv\Lib\site-packages\dbt\include\starter_project
+[0m20:05:33.526788 [info ] [MainThread]: 
+Your new dbt project "transform" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m20:05:33.526788 [info ] [MainThread]: Setting up your profile.
+[0m20:06:00.031852 [info ] [MainThread]: Profile transform written to C:\Users\Ambratis\.dbt\profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m20:06:00.035546 [debug] [MainThread]: Command `dbt init` succeeded at 20:06:00.035546 after 27.00 seconds
+[0m20:06:00.035546 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756D1F230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756ABC290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023756B0FFB0>]}
+[0m20:06:00.035546 [debug] [MainThread]: Flushing usage events

@@ -1,0 +1,14 @@
+# Data and Database files
+data/
+*.csv
+*.duckdb
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# dbt
+transform/target/
+transform/logs/
+transform/dbt_packages/

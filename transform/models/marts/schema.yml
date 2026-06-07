@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Dimension table for users"
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Dimension table for products"
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+      - name: category
+        tests:
+          - accepted_values:
+              values: ['ELECTRONICS', 'CLOTHING', 'HOME & GARDEN', 'BOOKS', 'TOYS', 'GROCERY']
+              # Note: We expect this to FAIL initially because our raw data had lowercase categories!
+              # We will fix this in the next step.
+
+  - name: fct_order_items
+    description: "Fact table for order line items"
+    columns:
+      - name: order_item_id
+        tests:
+          - unique
+          - not_null
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ['PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED', 'RETURNED']
+      # Referential Integrity Tests: Ensures the IDs in the fact table exist in the dimension tables
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
