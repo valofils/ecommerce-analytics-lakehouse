@@ -67,6 +67,14 @@ Data trust is paramount. Using dbt, I implemented **10 automated tests** to ensu
 
 ---
 
+# 📈 Project Evolution
+
+✅ **Incremental Models:** Implemented an incremental `delete+insert` strategy on `fct_order_items` using the `is_incremental()` macro to optimize pipeline runtimes for new daily data.
+
+✅ **BI Layer:** Built an interactive Streamlit dashboard to visualize Monthly Revenue Trends, Category Performance, and core KPIs (AOV, Total Revenue).
+
+---
+
 # 🚀 How to Run This Project
 
 ## Prerequisites
@@ -129,4 +137,12 @@ dbt run
 
 ```bash
 dbt test
+```
+
+---
+
+## 7. Launch the Streamlit Dashboard
+
+```bash
+streamlit run dashboard.py
 ```

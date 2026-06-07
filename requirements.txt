@@ -3,3 +3,4 @@ Faker==24.3.0
 numpy==1.26.4
 duckdb==0.10.0
 dbt-duckdb==1.7.4
+streamlit
