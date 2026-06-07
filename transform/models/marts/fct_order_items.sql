@@ -1,3 +1,9 @@
+{{ config(
+    materialized='incremental',
+    unique_key='order_item_id',
+    incremental_strategy='delete+insert'
+) }}
+
 WITH orders AS (
     SELECT * FROM {{ ref('stg_orders') }}
 ),
@@ -17,10 +23,7 @@ users AS (
 joined AS (
     SELECT
         o.order_id,
-        
-        -- THE FIX: If the user_id from the order doesn't exist in the users table, map it to -1
         COALESCE(u.user_id, -1) AS user_id,
-        
         o.status AS order_status,
         o.order_date,
         
@@ -29,8 +32,6 @@ joined AS (
         oi.quantity,
         
         p.price AS unit_price,
-        
-        -- Calculate item revenue. NULL prices/quantities will result in NULL revenue.
         (oi.quantity * p.price) AS item_revenue
 
     FROM orders o
@@ -39,7 +40,18 @@ joined AS (
     LEFT JOIN products p 
         ON oi.product_id = p.product_id
     LEFT JOIN users u 
-        ON o.user_id = u.user_id  -- Added this join to check for user existence
+        ON o.user_id = u.user_id
+),
+
+filtered AS (
+    SELECT * FROM joined
+
+    -- THE MAGIC INCREMENTAL LOGIC:
+    -- If the table already exists, only grab records where the order date
+    -- is GREATER THAN the maximum date already in the table.
+    {% if is_incremental() %}
+    WHERE order_date > (SELECT MAX(order_date) FROM {{ this }})
+    {% endif %}
 )
 
-SELECT * FROM joined
+SELECT * FROM filtered
